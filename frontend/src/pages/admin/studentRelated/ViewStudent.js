@@ -45,6 +45,7 @@ const ViewStudent = () => {
     const [name, setName] = useState('');
     const [rollNum, setRollNum] = useState('');
     const [password] = useState('');
+    const [message, setMessage] = useState('');
     const [sclassName, setSclassName] = useState('');
     const [studentSchool, setStudentSchool] = useState('');
     const [subjectMarks, setSubjectMarks] = useState('');
