@@ -42,10 +42,7 @@ const ViewStudent = () => {
     if (response) { console.log(response) }
     else if (error) { console.log(error) }
 
-    const [setName] = useState('');
-    const [setRollNum] = useState('');
-    const [password] = useState('');
-    const [message] = useState('');
+    const message = '';
     const [sclassName, setSclassName] = useState('');
     const [studentSchool, setStudentSchool] = useState('');
     const [subjectMarks, setSubjectMarks] = useState('');
