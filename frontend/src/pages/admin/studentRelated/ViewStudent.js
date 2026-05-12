@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUser, getUserDetails, updateUser } from '../../../redux/userRelated/userHandle';
+import { deleteUser, getUserDetails } from '../../../redux/userRelated/userHandle';
 import { useNavigate, useParams } from 'react-router-dom'
 import { getSubjectList } from '../../../redux/sclassRelated/sclassHandle';
 import { Box, Button, Collapse, IconButton, Table, TableBody, TableHead, Typography, Tab, Paper, BottomNavigation, BottomNavigationAction, Container } from '@mui/material';
@@ -45,7 +45,7 @@ const ViewStudent = () => {
     const [name, setName] = useState('');
     const [rollNum, setRollNum] = useState('');
     const [password] = useState('');
-    const [message, setMessage] = useState('');
+    const [message] = useState('');
     const [sclassName, setSclassName] = useState('');
     const [studentSchool, setStudentSchool] = useState('');
     const [subjectMarks, setSubjectMarks] = useState('');
@@ -72,10 +72,6 @@ const ViewStudent = () => {
     const handleSectionChange = (event, newSection) => {
         setSelectedSection(newSection);
     };
-
-    const fields = password === ""
-        ? { name, rollNum }
-        : { name, rollNum, password }
 
     useEffect(() => {
         if (userDetails) {
