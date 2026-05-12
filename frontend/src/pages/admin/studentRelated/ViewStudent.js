@@ -42,8 +42,8 @@ const ViewStudent = () => {
     if (response) { console.log(response) }
     else if (error) { console.log(error) }
 
-    const [, setName] = useState('');
-    const [, setRollNum] = useState('');
+    const [setName] = useState('');
+    const [setRollNum] = useState('');
     const [password] = useState('');
     const [message] = useState('');
     const [sclassName, setSclassName] = useState('');
@@ -260,7 +260,7 @@ const ViewStudent = () => {
                         </TableHead>
                         <TableBody>
                             {subjectMarks.map((result, index) => {
-                                if (!result.subName || !result.marksObtained) {
+                                if (!result.subName || result.marksObtained === undefined || result.marksObtained === null) {
                                     return null;
                                 }
                                 return (

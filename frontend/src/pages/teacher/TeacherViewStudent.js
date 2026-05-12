@@ -174,7 +174,7 @@ const TeacherViewStudent = () => {
                     {subjectMarks && Array.isArray(subjectMarks) && subjectMarks.length > 0 &&
                         <>
                             {subjectMarks.map((result, index) => {
-                                if (result.subName.subName === teachSubject) {
+                                if (result.subName?.subName === teachSubject) {
                                     return (
                                         <Table key={index}>
                                             <TableHead>
@@ -192,7 +192,7 @@ const TeacherViewStudent = () => {
                                         </Table>
                                     )
                                 }
-                                else if (!result.subName || !result.marksObtained) {
+                                else if (!result.subName || result.marksObtained === undefined || result.marksObtained === null) {
                                     return null;
                                 }
                                 return null

@@ -34,10 +34,10 @@ const StudentSubjects = () => {
     }, [userDetails])
 
     useEffect(() => {
-        if (subjectMarks === []) {
+        if (currentUser?.sclassName?._id) {
             dispatch(getSubjectList(currentUser.sclassName._id, "ClassSubjects"));
         }
-    }, [subjectMarks, dispatch, currentUser.sclassName._id]);
+    }, [dispatch, currentUser?.sclassName?._id]);
 
     const handleSectionChange = (event, newSection) => {
         setSelectedSection(newSection);
@@ -58,7 +58,7 @@ const StudentSubjects = () => {
                     </TableHead>
                     <TableBody>
                         {subjectMarks.map((result, index) => {
-                            if (!result.subName || !result.marksObtained) {
+                            if (!result.subName || result.marksObtained === undefined || result.marksObtained === null) {
                                 return null;
                             }
                             return (
