@@ -104,13 +104,16 @@ const updateTeacherSubject = async (req, res) => {
 const deleteTeacher = async (req, res) => {
     try {
         const deletedTeacher = await Teacher.findByIdAndDelete(req.params.id);
+        if (deletedTeacher) {
+            await Subject.updateOne(
+                { teacher: deletedTeacher._id, teacher: { $exists: true } },
+                { $unset: { teacher: 1 } }
+            );
 
-        await Subject.updateOne(
-            { teacher: deletedTeacher._id, teacher: { $exists: true } },
-            { $unset: { teacher: 1 } }
-        );
-
-        res.send(deletedTeacher);
+            res.send({ message: "Teacher deleted successfully" });
+        } else {
+            res.status(404).send({ message: "Teacher not found" });
+        }
     } catch (error) {
         res.status(500).json(error);
     }
