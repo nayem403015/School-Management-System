@@ -21,8 +21,6 @@ import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
 import Popup from '../../../components/Popup';
 
 const ViewStudent = () => {
-    const [showTab, setShowTab] = useState(false);
-
     const navigate = useNavigate()
     const params = useParams()
     const dispatch = useDispatch()
@@ -46,7 +44,7 @@ const ViewStudent = () => {
 
     const [name, setName] = useState('');
     const [rollNum, setRollNum] = useState('');
-    const [password, setPassword] = useState('');
+    const [password] = useState('');
     const [sclassName, setSclassName] = useState('');
     const [studentSchool, setStudentSchool] = useState('');
     const [subjectMarks, setSubjectMarks] = useState('');
@@ -55,7 +53,6 @@ const ViewStudent = () => {
     const [openStates, setOpenStates] = useState({});
 
     const [showPopup, setShowPopup] = useState(false);
-    const [message, setMessage] = useState("");
 
     const handleOpen = (subId) => {
         setOpenStates((prevState) => ({
@@ -89,17 +86,6 @@ const ViewStudent = () => {
             setSubjectAttendance(userDetails.attendance || []);
         }
     }, [userDetails]);
-
-    const submitHandler = (event) => {
-        event.preventDefault()
-        dispatch(updateUser(fields, studentID, address))
-            .then(() => {
-                dispatch(getUserDetails(studentID, address));
-            })
-            .catch((error) => {
-                console.error(error)
-            })
-    }
 
     const deleteHandler = () => {
         dispatch(deleteUser(studentID, address))
